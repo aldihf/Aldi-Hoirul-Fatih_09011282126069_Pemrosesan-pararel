@@ -14,12 +14,12 @@
   	
 4.	Untuk worker/slave, sama seperti master buka file /etc/hosts kemudian masukkan cukup masukkan IP dari master dan worker pemegang file
    
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/6b064ee5-544a-45bd-be02-5ac763903bb9)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/19560e5b-c9b0-4a92-8aef-271bb01f61c2)
 
 ## •	Membuat user baru
 1.	Untuk Server dan Worker/slave,Nama user harus sama. Untuk menambahkan User dapat digunakkan perintah sudo adduser(nama user baru)
 
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/a89a6f01-5162-4d53-bd63-63167b2f577e)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/6c5baace-b9b9-46e2-9f2e-a07c08d588ce)
 
 2.	Kemudian berikan akses root kepada user yang telah dibuat dengan perintah sudo usermod -aG sudo (nama user baru)
 3.	Terakhir kita masuk sebagai user baru yang telah dibuat dengan perintah su – (nama user baru)
