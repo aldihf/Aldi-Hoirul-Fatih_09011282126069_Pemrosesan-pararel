@@ -10,7 +10,7 @@
 1.	Untuk server, buka file /etc/hosts menggunakan perintah sudo nano /etc/hosts
 2.	Di dalam file /etc/hosts tambahkan IP master dan Slave/worker,kemudian save file dan keluar dari file dengan ctrl+x
 
-  	![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/f2d4fde2-a0c4-443d-9989-2b0bbbb7203f)
+    ![WhatsApp Image 2023-11-16 at 19 14 04_97ec1e36](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/8f5da45b-0fe7-42c1-b189-3da73e553fce)
   	
 4.	Untuk worker/slave, sama seperti master buka file /etc/hosts kemudian masukkan cukup masukkan IP dari master dan worker pemegang file
    
