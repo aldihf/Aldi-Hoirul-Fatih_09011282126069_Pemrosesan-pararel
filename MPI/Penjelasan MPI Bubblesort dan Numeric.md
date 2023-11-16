@@ -7,12 +7,19 @@
 3.	Melakukan penginstallan net-tools untuk mengecek IP dan vim untuk teks editor
 
 ## •	Konfigurasi IP Server dan Slave didalam file /etc/hosts
-1.	Untuk server, buka file /etc/hosts menggunakan perintah sudo nano /etc/hosts
-2.	Di dalam file /etc/hosts tambahkan IP master dan Slave/worker,kemudian save file dan keluar dari file dengan ctrl+x
+1.  Melakukan pengecekan IP dengan perintah berikut:
+
+    $ Ifconfig
+    | NAMA    |     Master       |     Slave1        |     Slave2       |     Slave3        |
+    |---------|------------------|-------------------|------------------|-------------------|
+    | IP      | 192.168.102.170  |  192.168.102.215  |  192.168.102.95  |  192.168.102.236  |
+
+2.	Untuk server, buka file /etc/hosts menggunakan perintah sudo nano /etc/hosts
+3.	Di dalam file /etc/hosts tambahkan IP master dan Slave/worker,kemudian save file dan keluar dari file dengan ctrl+x
 
     ![WhatsApp Image 2023-11-16 at 19 14 04_97ec1e36](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/8f5da45b-0fe7-42c1-b189-3da73e553fce)
   	
-3.	Untuk worker/slave, sama seperti master buka file /etc/hosts kemudian masukkan cukup masukkan IP dari master dan worker pemegang file
+4.	Untuk worker/slave, sama seperti master buka file /etc/hosts kemudian masukkan cukup masukkan IP dari master dan worker pemegang file
    
     ![WhatsApp Image 2023-11-16 at 08 58 04_4be95a18](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/4346ae10-b326-45af-8c90-f74fa4fd0db4)
 
