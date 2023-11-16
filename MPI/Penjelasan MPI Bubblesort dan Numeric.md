@@ -12,91 +12,91 @@
 
     ![WhatsApp Image 2023-11-16 at 19 14 04_97ec1e36](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/8f5da45b-0fe7-42c1-b189-3da73e553fce)
   	
-4.	Untuk worker/slave, sama seperti master buka file /etc/hosts kemudian masukkan cukup masukkan IP dari master dan worker pemegang file
+3.	Untuk worker/slave, sama seperti master buka file /etc/hosts kemudian masukkan cukup masukkan IP dari master dan worker pemegang file
    
     ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/19560e5b-c9b0-4a92-8aef-271bb01f61c2)
 
 ## •	Membuat user baru
-1.	Untuk Server dan Worker/slave,Nama user harus sama. Untuk menambahkan User dapat digunakkan perintah sudo adduser(nama user baru)
+1.	Untuk Server dan Worker/slave, Nama user harus sama. Untuk menambahkan User dapat digunakkan perintah sudo adduser(nama user baru)
 
     ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/6c5baace-b9b9-46e2-9f2e-a07c08d588ce)
 
 2.	Kemudian berikan akses root kepada user yang telah dibuat dengan perintah sudo usermod -aG sudo (nama user baru)
 3.	Terakhir kita masuk sebagai user baru yang telah dibuat dengan perintah su – (nama user baru)
    
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/33874e39-0006-4b8b-90f0-456ecc6f967f)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/97bee918-31fc-45cc-beb9-1dfdfc05fa37)
    
 ## •	Konfigurasi SSH
 1.	Pertama lakukan penginstalan ssh diserver dan slave dengan perintah sudo apt install openssh-server
    
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/768213ea-9042-4e68-8d42-084f07b2b2e1)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/84f982fb-b0d6-4c62-951a-17aa112f25f4)
    
     Kemudian lakukan pengecekan ssh dengan perintah ssh (nama user)@(host)
   	
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/fb532888-464d-40e8-82c3-579f88384a93)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/16e753f4-f179-4603-88d0-4717c7d14e4c)
   	
-3.	Setelahnya lakukan generate keygen diserver dengan perintah ssh-keygen -t rsa
+2.	Setelahnya lakukan generate keygen diserver dengan perintah ssh-keygen -t rsa
    
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/6e72e6c5-2ac3-49b3-a8a6-172058a4d2f6)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/549844d5-39c9-4f37-a166-ee3e2512431e)
   	
-5.	Kemudian lakukan copy key publik ke client dengan perintah cd .ssh
+3.	Kemudian lakukan copy key publik ke client dengan perintah cd .ssh
     cat id_rsa.pub | ssh <nama user>@<host> "mkdir .ssh; cat >> .ssh/authorized_keys". Lakukan berkali-kali sesuai dengan jumlah dan host dari setiap slave.
   	
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/2df8f4a5-9e89-487f-a237-563110f629a4)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/c6b0ebf1-26c5-4cf2-b230-ccb91873e71c)
 
 ## •	Pengkonfigurasian NFS
 1.	Di dalam server dan slave buat sebuah folder dengan nama bebas,gunakan perintah mkdir.Folder setiap pc harus memiliki nama yang sama (nama folder yang ingin dibuat)
    
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/ec0a5878-a317-4ced-a667-218bed1dbd31)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/eb7f5af7-2438-4cbb-81b9-61615a0e0589)
   	
 2.	Lakukan penginstalan NFS server perintahnnya ialah sudo apt install nfs-kernel-server
    
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/940d6da3-65a5-488b-bafb-1ca1c3e8024a)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/2206fae1-3cad-41ce-b28d-bc9f46fb4d05)
   	
 3.	Lakukan konfigurasi file /etc/exports server, dengan perintah sudo vim /etc/exports
     Kemudian masukkan kalimat berikut:
     <lokasi shared folder> *(rw,sync,no_root_squash,no_subtree_check)
     Sesuaikan lokasi shared folder dengan folder yang telah dibuat sebelumnya.
   	
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/3733a4d8-7a74-4592-a9a7-b7cceedf8e63)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/92fd4bcd-da0a-41df-ab9a-28c4da8f106f)
   	
     Kemudian masukkan perintah sudo exportfs -a dan sudo systemctl restart nfs-kernel-server
   	
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/e233015f-2f08-4eb9-bec1-8e2bc2655349)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/8fc520f9-2147-4cb8-9cf5-e0dc1062f0ba)
   	
 4.	Kemudian install nfs pada client dengan perintah sudo apt install nfs-common
    
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/c15f94ed-c341-435c-97e3-41cb908577cd)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/5df8cf76-e709-4b60-a62b-d0ecfd4811d4)
   	
 5.	Kemudian Mounting dengan perintah sudo mount <server host>:<lokasi shared folder di server> <lokasi shared folder di client> pada slave
    
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/d1c2449e-c544-410c-a882-667a1e03ce95)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/93eb3178-7b98-4dd8-a532-f5d97a906d00)
 
 ## •	MPI
    Install MPI dengan perintah sudo apt install openmpi-bin libopenmpi-dev pada server dan slave
 
-   ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/68f9e749-458a-4706-ab43-0f8d71a9b0a0)
+   ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/d737a33b-2aa5-4675-bfad-0e75e5543204)
 
 ## •	Menjalankan program bubblesort dan numerik
 1.	Lakukan penginstallan python dan mpi4py dengan perintah sudo apt install python3-pip dan pip install mpi4py
    
-    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/a0b95cfc-a498-4920-85f0-69d00a0e615e)
+    ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/fa4ee1ce-ba97-40e7-a599-371a0eb68c59)
   	
 2.	Pertama buat 2 buah file python yaitu touch bubblesort.py untuk file bubblesort dan touch numeric.py untuk file numeric    
 3.	Kemudian masuk kemasing-masing file dengan cara sudo nano bubblesort.py/numeric.py dan didalam file tersebut masukkan program sesuai dengan jenis nama file.
 - Program bubblesort
 
-  ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/02485c97-8c11-409a-8ad5-e414ef7a8740)
+  ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/e8dce825-9e71-424a-8163-710c448cc2eb)
   
 - Program numeric
 
-  ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/bdb0286c-2b62-4f21-bdbc-206a72de18f2)
+  ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/1b35c1f5-b93b-416c-9204-59cbbb8c4829)
   
 4.	Jalankan file menggunakan MPI dengan perintah mpirun -np <jumlah prosesor> -host <daftar host> python3 test.py.
 - Hasil program bubblesort
 
-  ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/cc6c8b01-3390-45a9-b565-fa1288689bc6)
+  ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/003a55a8-38c4-488b-bc9e-1f1694ed01bb)
   
 - Hasil program numeric
 
-  ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/15f14fb3-215b-4336-9142-378d91ff5286)
+  ![image](https://github.com/aldihf/Aldi-Hoirul-Fatih_09011282126069_Pemrosesan-pararel/assets/151024026/197e02b8-1111-41ac-a73e-0f622b0e49de)
